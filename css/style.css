@@ -1,0 +1,11 @@
+body {
+	margin: 0;
+}
+
+#IntroCanvas {
+	display: block;
+}
+
+#GameCanvas {
+	display: block;
+}
