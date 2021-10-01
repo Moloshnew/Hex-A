@@ -7,7 +7,7 @@ function intro() {
 		time = 0;
 		
 	printIntro(a, startX, startY);
-		
+	/*	
 	setTimeout(() => {
 		anim = setInterval(() => {
 			printIntro(a, startX, startY);
@@ -35,6 +35,7 @@ function intro() {
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		init_webGL();
 	}, 4000);
+    */
 }
 
 function printIntro(a, startX, startY) {
