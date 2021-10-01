@@ -8,9 +8,52 @@
 	
 	<script src="js/intro.js"></script>
 	<script src="js/init.js"></script>
+	<script src="js/game.js"></script>
 	
-	<script src="shaders/vertex shader.js" type="shader" id="vertex-shader"></script>
-    <script src="shaders/fragment shader.js" type="shader" id="fragment-shader"></script>
+	<script type="shader" id="vertex-shader">
+		attribute vec3 vertexPosition;
+		attribute vec3 vertexColor;
+
+		uniform vec3 offset, rot;
+		uniform float screenRatio;
+
+		varying vec3 fragColor;
+
+		void main(){
+			fragColor = vertexColor;
+
+			vec3 pos = vertexPosition + offset;
+			
+			pos.xy = vec2(
+				pos.x * cos(rot.z) + pos.y * sin(rot.z),
+				pos.y * cos(rot.z) - pos.x * sin(rot.z)
+			);
+			
+			pos.xz = vec2(
+				pos.x * cos(rot.y) - pos.z * sin(rot.y),
+				pos.z * cos(rot.y) + pos.x * sin(rot.y)
+			);
+			
+			pos.yz = vec2(
+				pos.y * cos(rot.x) + pos.z * sin(rot.x),
+				pos.z * cos(rot.x) - pos.y * sin(rot.x)
+			);
+			
+			
+			pos.x = pos.x * screenRatio;
+			gl_Position = vec4(pos, 5);
+		}
+	</script>
+	
+    <script type="shader" id="fragment-shader">
+		precision lowp float;
+
+		varying vec3 fragColor;
+
+		void main(){
+			gl_FragColor = vec4(fragColor, 1.0);
+		}
+	</script>
 </head>
 <body>
     <canvas id="IntroCanvas">

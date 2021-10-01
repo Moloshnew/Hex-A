@@ -4,7 +4,9 @@ function init_canvas() {
 
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
-	intro();
+	
+	init_webGL();
+	//intro();
 }
 
 function init_webGL() {
@@ -14,9 +16,10 @@ function init_webGL() {
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
 	
-	var vertexShaderText = document.getElementById('vertex-shader').text,
-		fragmentShaderText = document.getElementById('fragment-shader').text,
-		gl = canvas.getContext('webgl');
+	let vertexShaderText = document.getElementById('vertex-shader').text,
+		fragmentShaderText = document.getElementById('fragment-shader').text;
+	
+	gl = canvas.getContext('webgl');
 		
 	if (!gl) {
 		alert('Your browser does not support WebGL');
@@ -25,7 +28,7 @@ function init_webGL() {
 	
 	gl.viewport(0, 0, window.innerWidth, window.innerHeight);
 
-	var vertexShader = gl.createShader(gl.VERTEX_SHADER);
+	let vertexShader = gl.createShader(gl.VERTEX_SHADER);
 		fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
 	
 	gl.shaderSource(vertexShader, vertexShaderText);
@@ -46,7 +49,7 @@ function init_webGL() {
 		return;
 	}
 	
-	var program = gl.createProgram();
+	program = gl.createProgram();
 	gl.attachShader(program, vertexShader);
 	gl.attachShader(program, fragmentShader);
 	gl.linkProgram(program);
@@ -57,5 +60,16 @@ function init_webGL() {
 		alert('Error validating program');
 		return;
 	}
-		
+	
+	StartGame();
+}
+
+function initMap() {
+	return [
+	[1, 1, 1, 1, 1],
+	[1, 1, 2, 1, 1],
+	[1, 2, 3, 3, 1],
+	[1, 1, 2, 2, 1],
+	[1, 1, 1, 1, 1]
+	];
 }

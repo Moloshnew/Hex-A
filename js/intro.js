@@ -1,5 +1,5 @@
 function intro() {
-	var a = canvas.width / 35, 
+	let a = canvas.width / 35, 
 		startX = canvas.width / 5,
 		startY = 90,
 		deltaX = (startX - 30) / 40, 
@@ -7,7 +7,7 @@ function intro() {
 		time = 0;
 		
 	printIntro(a, startX, startY);
-	/*	
+		
 	setTimeout(() => {
 		anim = setInterval(() => {
 			printIntro(a, startX, startY);
@@ -22,7 +22,7 @@ function intro() {
 	}, 1000);
 	
 	setTimeout(() => {
-		ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+		ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
 		anim = setInterval(() => {
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
 			if (time > 80) clearInterval(anim);
@@ -35,11 +35,10 @@ function intro() {
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		init_webGL();
 	}, 4000);
-    */
 }
 
 function printIntro(a, startX, startY) {
-	ctx.fillStyle = '#111111';
+	ctx.fillStyle = '#170000';
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	ctx.fillStyle = '#EEEEEE';
